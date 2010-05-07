@@ -1,4 +1,6 @@
 This is just the beginning of rebuilding my dot file collection for Linux
 after a long absence.
 
-Starting with .vimrc and .zshrc...
+Starting with the usual suspects (Vim, ZSH, Git, etc).
+
+Run install.py! Come on, I dare you ;)

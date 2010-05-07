@@ -57,14 +57,6 @@ env_dircolors
 # : aliases
 alias ls='ls --color=auto -F'
 alias vi=vim
-alias gst='git status'
-alias gl='git pull'
-alias gp='git push'
-alias gd='git diff'
-alias gc='git commit -v'
-alias gca='git commit -v -a'
-alias gb='git branch'
-alias gba='git branch -a'
 
 # : zsh options
 setopt AUTO_PUSHD
