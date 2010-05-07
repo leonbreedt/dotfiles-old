@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import getopt
 import glob
 import os
