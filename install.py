@@ -11,7 +11,7 @@ import shutil
 from subprocess import Popen, PIPE
 import sys
 
-EXCLUDES = ['.git', 'README', 'install.py']
+EXCLUDES = ['.git', 'README', 'install.py', '.placeholder']
 DIFF = 'diff -u'
 COLORDIFF = 'colordiff'
 
