@@ -65,8 +65,8 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt AUTO_PARAM_SLASH
 setopt AUTO_LIST
 setopt NO_BAD_PATTERN
-setopt NO_BANG_HIST
 setopt NO_BEEP
+setopt BANG_HIST
 setopt BSD_ECHO
 setopt INC_APPEND_HISTORY
 setopt HIST_NO_STORE

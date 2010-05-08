@@ -99,8 +99,8 @@ prompt_bitserf_setup() {
 	pc[punc]='Yellow'
 	pc[line]='Magenta'
 	pc[hist]='Green'
-	pc[path]='Cyan'
-	pc[shortpath]='default'
+	pc[path]='_Black'
+	pc[shortpath]='_Black'
 	pc[rc]='Red'
 	pc[scm_branch]='Cyan'
 	pc[scm_commitid]='Yellow'
@@ -108,7 +108,14 @@ prompt_bitserf_setup() {
 	pc[scm_status_staged]='Green'
 	pc[#]='Yellow'
 	for cn in ${(k)pc}; do
-		pc[${cn}]=$(colorword $pc[$cn])
+                local name=$pc[$cn]
+                local att=
+                if [ $name[1] = "_" ]; then
+                    name=$name[2,${#name}]
+                    att=01
+                fi
+
+                pc[${cn}]=$(colorword $name)
 	done
 	pc[reset]=$(colorword . . 00)
 
