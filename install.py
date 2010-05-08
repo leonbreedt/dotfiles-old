@@ -50,7 +50,7 @@ def diff(path1, path2):
             output  = o
     return output
 
-def install_entry(srcpath, force=False, pretend=False):
+def install_entry(srcpath, force=False, pretend=False, destdir="~"):
     entry_type = None
     if os.path.isfile(srcpath):
         entry_type = 'File'
@@ -58,7 +58,7 @@ def install_entry(srcpath, force=False, pretend=False):
         entry_type = 'Directory'
     installed = False
     different = False
-    tildepath = "~/%s" % srcpath
+    tildepath = os.path.join(destdir, srcpath)
     destpath = os.path.expanduser(tildepath)
 
     def install(src, dest):
@@ -122,9 +122,15 @@ if __name__ == "__main__":
         if o == "-f": force = True
         elif o == "-p": pretend = True
 
+    dest_dir = os.environ["HOME"]
+    if len(args) > 0:
+        dest_dir = args[0]
+
+    print("Installing to %s" % dest_dir)
+
     script_dir = os.path.abspath(os.path.dirname(sys.argv[0]))
 
-    results = [install_entry(fn, force=force, pretend=pretend)
+    results = [install_entry(fn, force=force, pretend=pretend, destdir=dest_dir)
               for fn in recursive_entries(script_dir)]
 
     all_installed = all(x[0] for x in results) 
