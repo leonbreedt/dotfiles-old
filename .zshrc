@@ -87,13 +87,13 @@ setopt NO_NOMATCH
 setopt RM_STAR_SILENT
 setopt NO_RM_STAR_WAIT
 setopt NO_HUP
+setopt PROMPT_SUBST
 
 # : key bindings
 bindkey -e
 
 # : prompt
 autoload -U colors && colors
-at_color='white'
-un_color='green'
-is_root && un_color='red'
-export PROMPT="(%{$fg_bold[$un_color]%}%n%{$fg_bold[$at_color]%}@%{$fg_bold[yellow]%}%m%{$reset_color%}):%20<...<%/ %(!.#.$) %{$reset_color%}"
+autoload -U promptinit && promptinit
+
+prompt bitserf
