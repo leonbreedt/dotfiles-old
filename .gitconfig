@@ -1,0 +1,16 @@
+[user]
+	name = Leon Breedt
+	email = bitserf@gmail.com
+[alias]
+	co = checkout
+        ci = commit
+        ca = commit -a
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+        st = status
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        interactive = auto
+        ui = true
+        pager = true
