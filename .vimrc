@@ -64,3 +64,6 @@ set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
 " use subtle colors for line number
 hi LineNr ctermfg=darkgray
+
+" recursively scan up for a tags file
+set tags=tags;/,TAGS;/
