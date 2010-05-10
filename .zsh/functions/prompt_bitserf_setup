@@ -1,5 +1,5 @@
 # bitserf's zsh prompt theme
-# tweaked version of jborbin's ****ing awesome zsh-git: http://github.com/jcorbin/zsh-git
+# tweaked version of jcorbin's ****ing awesome zsh-git: http://github.com/jcorbin/zsh-git
 # only change is moving username to PROMPT instead of RPROMPT.
 
 autoload -U zgitinit
@@ -139,9 +139,8 @@ prompt_bitserf_setup() {
 	PROMPT+="%(?.. $pc[rc]exited %1v$pc[reset])"
 	PROMPT+="
 "
-	PROMPT+="$pc[shortpath]%1~$pc[reset]"
 	PROMPT+="\$(prompt_bitserf_scm_branch)"
-	PROMPT+=" $pc[#]%#$pc[reset] "
+	PROMPT+="$pc[#]%#$pc[reset] "
 
 	RPROMPT=
 	if [ $verbose ]; then
@@ -273,7 +272,7 @@ prompt_bitserf_scm_branch() {
 	local -A pc
 	pc=(${(kv)bitserf_prompt_colors})
 
-	echo -n "$pc[punc]:$pc[scm_branch]$(zgit_head)"
+	echo -n "$pc[scm_branch]$(zgit_head)"
 
 	if zgit_inworktree; then
 		if ! zgit_isindexclean; then

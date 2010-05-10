@@ -98,12 +98,10 @@ def install_entry(srcpath, force=False, pretend=False, destdir="~"):
 
 def strip_cwd(path):
     path = path.replace(os.getcwd(), '')
-    if path[0] == '/': path = path[1:]
-    return path
+    return path[1:] if path[0] == '/' else path
 
 def recursive_entries(basepath, excludes=EXCLUDES):
-    for item in [os.path.join(basepath, x)
-                 for x in os.listdir(basepath)
+    for item in [os.path.join(basepath, x) for x in os.listdir(basepath)
                  if not os.path.basename(x) in excludes]:
         yield strip_cwd(item)
         if os.path.isdir(item):
