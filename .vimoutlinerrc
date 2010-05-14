@@ -1,1 +1,2 @@
+let g:vo_modules_load = "checkbox:hoist"
 colorscheme vo_dark
