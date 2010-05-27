@@ -31,8 +31,13 @@ var_prepend() {
   done
 }
 is_root() {
-  id="x`id -u`"
-  test "$id" = "x0"
+  test "x`id -u`" = "x0"
+}
+is_osx() {
+  test "x`uname`" = "xDarwin"
+}
+is_linux() {
+  test "x`uname`" = "xLinux"
 }
 path_append() {
   var_append path $@
@@ -55,7 +60,8 @@ env_less
 env_dircolors
 
 # : aliases
-alias ls='ls --color=auto -F'
+is_osx && alias ls='ls -G'
+is_linux && alias ls='ls --color=auto -F'
 alias vi=vim
 
 # : zsh options
@@ -91,6 +97,9 @@ setopt PROMPT_SUBST
 
 # : key bindings
 bindkey -e
+
+# : load environment-specific variables
+test -f ~/.profile && source ~/.profile
 
 # : prompt
 autoload -U colors && colors

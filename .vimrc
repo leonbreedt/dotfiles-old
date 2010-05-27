@@ -7,9 +7,6 @@ filetype plugin indent on
 " classic vi, ugh
 set nocompatible
 
-" handy to chdir to current buffer
-set autochdir
-
 " backspacing through space indentation is neat
 set backspace=indent,eol,start
 
