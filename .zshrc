@@ -106,3 +106,6 @@ autoload -U colors && colors
 autoload -U promptinit && promptinit
 
 prompt bitserf
+
+# : rvm (Ruby Version Manager)
+[ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
