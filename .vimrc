@@ -36,7 +36,7 @@ set laststatus=2
 set listchars=tab:>-,trail:-
 
 " prefix lines with line numbers
-set number
+" set number
 
 " get nice alignment up to 9999
 set numberwidth=5
