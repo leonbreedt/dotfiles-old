@@ -48,13 +48,15 @@ path_prepend() {
 
 # : environment
 export PAGER=less
-export EDITOR=vim
-export SVN_EDITOR=vim
+export EDITOR=mvim
+export SVN_EDITOR=mvim
 export VISUAL=$EDITOR
 export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.zsh_history
 export EMAIL=bitserf@gmail.com
+
+[ -d ~/Bin ] && path_prepend ~/Bin
 
 env_less
 env_dircolors
@@ -62,7 +64,8 @@ env_dircolors
 # : aliases
 is_osx && alias ls='ls -G'
 is_linux && alias ls='ls --color=auto -F'
-alias vi=vim
+is_osx && alias vi=mvim
+is_linux && alias vi=vim
 
 # : zsh options
 setopt AUTO_PUSHD
