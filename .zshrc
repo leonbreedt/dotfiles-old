@@ -49,7 +49,8 @@ path_prepend() {
 # : environment
 export PAGER=less
 export EDITOR=mvim
-export SVN_EDITOR=mvim
+export SVN_EDITOR="$EDITOR -f"
+export GIT_EDITOR="$EDITOR -f"
 export VISUAL=$EDITOR
 export HISTSIZE=1000
 export SAVEHIST=1000
