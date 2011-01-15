@@ -64,3 +64,6 @@ hi LineNr ctermfg=darkgray
 
 " recursively scan up for a tags file
 set tags=tags;/,TAGS;/
+
+" NERDTree! 
+map ,, :NERDTreeToggle<CR>
