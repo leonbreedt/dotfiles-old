@@ -65,7 +65,7 @@ env_dircolors
 # : aliases
 is_osx && alias ls='ls -G'
 is_linux && alias ls='ls --color=auto -F'
-is_osx && alias vi=mvim
+is_osx && alias vi=vim
 is_linux && alias vi=vim
 
 # : zsh options
