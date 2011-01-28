@@ -67,3 +67,6 @@ set tags=tags;/,TAGS;/
 
 " NERDTree! 
 map ,, :NERDTreeToggle<CR>
+
+" Command-T
+map ,t :CommandT<CR>

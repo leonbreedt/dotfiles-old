@@ -35,7 +35,6 @@ export SAVEHIST=1000
 export HISTFILE=~/.zsh_history
 export EMAIL=ljb@bitserf.org
 
-path=(/usr/local/bin $path)
 [ -d ~/Bin ] && path=(~/Bin $path)
 
 env_less
