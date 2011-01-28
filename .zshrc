@@ -45,6 +45,7 @@ is_osx && alias ls='ls -G'
 is_linux && alias ls='ls --color=auto -F'
 is_osx && alias vi=vim
 is_linux && alias vi=vim
+alias p=padrino
 
 # : zsh options
 setopt AUTO_PUSHD
