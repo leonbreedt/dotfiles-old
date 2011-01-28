@@ -14,22 +14,6 @@ env_dircolors() {
   which dircolors 2>&1 >/dev/null
   test $? -eq 0 && eval `dircolors`
 }
-var_append() {
-  var="$1"; shift
-  for entry in $@; do
-    if [ X"${(e)var:+\$$var}[(r)$entry]" = X ]; then
-      set -A ${var} ${(e)var:+\$$var} ${entry}
-    fi
-  done
-}
-var_prepend() {
-  var="$1"; shift
-  for entry in $@; do
-    if [ X"${(e)var:+\$$var}[(r)$entry]" = X ]; then
-      set -A ${var} ${entry} ${(e)var:+\$$var}
-    fi
-  done
-}
 is_root() {
   test "x`id -u`" = "x0"
 }
@@ -39,25 +23,20 @@ is_osx() {
 is_linux() {
   test "x`uname`" = "xLinux"
 }
-path_append() {
-  var_append path $@
-}
-path_prepend() {
-  var_prepend path $@
-}
 
 # : environment
 export PAGER=less
-export EDITOR=mvim
+export EDITOR=vim
 export SVN_EDITOR="$EDITOR -f"
 export GIT_EDITOR="$EDITOR -f"
 export VISUAL=$EDITOR
 export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.zsh_history
-export EMAIL=bitserf@gmail.com
+export EMAIL=ljb@bitserf.org
 
-[ -d ~/Bin ] && path_prepend ~/Bin
+path=(/usr/local/bin $path)
+[ -d ~/Bin ] && path=(~/Bin $path)
 
 env_less
 env_dircolors
