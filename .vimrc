@@ -70,3 +70,4 @@ map ,, :NERDTreeToggle<CR>
 
 " Command-T
 map ,t :CommandT<CR>
+map ,f :CommandTFlush<CR>
