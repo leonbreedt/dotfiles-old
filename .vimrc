@@ -41,9 +41,9 @@ set listchars=tab:>-,trail:-
 " get nice alignment up to 9999
 set numberwidth=5
 
-" 4-wide tabs have grown on me
-set shiftwidth=4
-set softtabstop=4
+" 2-wide tabs have grown on me
+set shiftwidth=2
+set softtabstop=2
 
 " make it obvious when tabs are being used
 set tabstop=8
