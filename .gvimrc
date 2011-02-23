@@ -1,5 +1,5 @@
 set bg=dark
-set gfn=Consolas:h14
+set gfn=Envy\ Code\ R:h14
 set gcr=n:blinkon0
 
 colorscheme desert
