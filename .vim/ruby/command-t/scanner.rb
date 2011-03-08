@@ -68,19 +68,26 @@ module CommandT
       ::VIM::evaluate("empty(expand(fnameescape('#{path}')))").to_i == 1
     end
 
-    def git_repository? path
-      repo = File.join(path, '.git')
-      repo if File.directory?(repo)
+    def within_git_repository?(dir)
+      return true if File.directory?(File.join(dir, '.git'))
+      return false if %(. /).include?(parent = File.dirname(dir))
+      within_git_repository?(parent)
     end
 
-    def git_ls repo_dir
-      git = ENV['PATH'].split(':').map{|x| File.join(x, 'git')}.find{|x| File.executable?(x)}
-      `git ls-files -coz`.split("\0") if git
+    def git_list dir
+      @git ||= ENV['PATH'].split(':').map{|x| File.join(x, 'git')}.find{|x| File.executable?(x)}
+      # names are relative to dir, not prefix. expand to full path so our prefix
+      # stripping doesn't clobber.
+      unless @git.nil?
+        files = `#{@git} ls-files "#{dir}" -coz`.split("\0").map{|relpath| File.join(dir, relpath)}
+        files if $?.success?
+      end
     end
 
     def add_paths_for_directory dir, accumulator
-      if repo = git_repository?(dir) && files = git_ls(repo)
-        accumulator.concat files
+      if within_git_repository?(dir) && paths = git_list(dir)
+        stripped_paths = paths.map{|path| path[@prefix_len + 1..-1]} 
+        accumulator.concat stripped_paths
       else
         Dir.foreach(dir) do |entry|
           next if ['.', '..'].include?(entry)
