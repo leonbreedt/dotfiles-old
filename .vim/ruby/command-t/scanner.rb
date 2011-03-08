@@ -68,21 +68,35 @@ module CommandT
       ::VIM::evaluate("empty(expand(fnameescape('#{path}')))").to_i == 1
     end
 
+    def git_repository? path
+      repo = File.join(path, '.git')
+      repo if File.directory?(repo)
+    end
+
+    def git_ls repo_dir
+      git = ENV['PATH'].split(':').map{|x| File.join(x, 'git')}.find{|x| File.executable?(x)}
+      `git ls-files -coz`.split("\0") if git
+    end
+
     def add_paths_for_directory dir, accumulator
-      Dir.foreach(dir) do |entry|
-        next if ['.', '..'].include?(entry)
-        path = File.join(dir, entry)
-        unless path_excluded?(path)
-          if File.file?(path)
-            @files += 1
-            raise FileLimitExceeded if @files > @max_files
-            accumulator << path[@prefix_len + 1..-1]
-          elsif File.directory?(path)
-            next if @depth >= @max_depth
-            next if (entry.match(/\A\./) && !@scan_dot_directories)
-            @depth += 1
-            add_paths_for_directory path, accumulator
-            @depth -= 1
+      if repo = git_repository?(dir) && files = git_ls(repo)
+        accumulator.concat files
+      else
+        Dir.foreach(dir) do |entry|
+          next if ['.', '..'].include?(entry)
+          path = File.join(dir, entry)
+          unless path_excluded?(path)
+            if File.file?(path)
+              @files += 1
+              raise FileLimitExceeded if @files > @max_files
+              accumulator << path[@prefix_len + 1..-1]
+            elsif File.directory?(path)
+              next if @depth >= @max_depth
+              next if (entry.match(/\A\./) && !@scan_dot_directories)
+              @depth += 1
+              add_paths_for_directory path, accumulator
+              @depth -= 1
+            end
           end
         end
       end
