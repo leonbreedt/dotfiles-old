@@ -1,6 +1,6 @@
 [user]
 	name = Leon Breedt
-	email = bitserf@gmail.com
+	email = ljb@bitserf.org
 [alias]
 	co = checkout
         ci = commit
