@@ -36,6 +36,11 @@ append_path() {
 is_osx && vim=/Applications/MacVim.app/Contents/MacOS/Vim
 is_linux && vim=vim
 
+# : custom python
+is_osx && has_exe brew && {
+  append_path /usr/local/Cellar/python/2.7.1/bin
+}
+
 export PAGER=less
 export EDITOR=$vim
 export SVN_EDITOR="$EDITOR -f"
