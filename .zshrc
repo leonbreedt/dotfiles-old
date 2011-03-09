@@ -23,6 +23,14 @@ is_osx() {
 is_linux() {
   test "x`uname`" = "xLinux"
 }
+has_exe() {
+  which $1 2>&1 >/dev/null
+  test $? -eq 0
+}
+append_path() {
+  p=$1
+  if [[ "x${path[(r)$p]}" = "x$p" ]]; then ; else; path=($p $path); fi
+}
 
 # : environment
 export PAGER=less
@@ -35,7 +43,11 @@ export SAVEHIST=1000
 export HISTFILE=~/.zsh_history
 export EMAIL=ljb@bitserf.org
 
-[ -d ~/Bin ] && path=(~/Bin $path)
+# : python & ruby installed using homebrew on OS X
+is_osx && has_exe brew && {
+  append_path /usr/local/Cellar/python/2.7.1/bin
+  append_path /usr/local/Cellar/ruby/1.9.2-p180/bin
+}
 
 env_less
 env_dircolors
@@ -91,4 +103,4 @@ autoload -U promptinit && promptinit
 prompt bitserf
 
 # : rvm (Ruby Version Manager)
-[ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
+is_linux && [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
