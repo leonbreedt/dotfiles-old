@@ -103,4 +103,4 @@ autoload -U promptinit && promptinit
 prompt bitserf
 
 # : rvm (Ruby Version Manager)
-is_linux && [ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
+[ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
