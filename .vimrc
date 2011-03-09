@@ -71,3 +71,5 @@ map ,, :NERDTreeToggle<CR>
 " Command-T
 map ,t :CommandT<CR>
 map ,f :CommandTFlush<CR>
+" Needed for console Vim
+let g:CommandTCancelMap=['<ESC>','<C-c>']

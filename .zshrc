@@ -33,8 +33,11 @@ append_path() {
 }
 
 # : environment
+is_osx && vim=/Applications/MacVim.app/Contents/MacOS/Vim
+is_linux && vim=vim
+
 export PAGER=less
-export EDITOR=vim
+export EDITOR=$vim
 export SVN_EDITOR="$EDITOR -f"
 export GIT_EDITOR="$EDITOR -f"
 export VISUAL=$EDITOR
@@ -43,20 +46,14 @@ export SAVEHIST=1000
 export HISTFILE=~/.zsh_history
 export EMAIL=ljb@bitserf.org
 
-# : python & ruby installed using homebrew on OS X
-is_osx && has_exe brew && {
-  append_path /usr/local/Cellar/python/2.7.1/bin
-  append_path /usr/local/Cellar/ruby/1.9.2-p180/bin
-}
-
 env_less
 env_dircolors
 
 # : aliases
 is_osx && alias ls='ls -G'
 is_linux && alias ls='ls --color=auto -F'
-is_osx && alias vi=vim
-is_linux && alias vi=vim
+is_osx && alias vi=$vim
+is_linux && alias vi=$vim
 alias p=padrino
 
 # : zsh options
