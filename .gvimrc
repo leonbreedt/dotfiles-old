@@ -1,8 +1,12 @@
-set bg=dark
-set gfn=Envy\ Code\ R:h14
-set gcr=n:blinkon0
+set background=dark
+set guifont=Inconsolata:h17
+set guicursor=n:blinkon0
 
 colorscheme desert
+
+" fix non text lines
+hi NonText NONE
+hi NonText ctermfg=1 guifg=LightBlue
 
 " use Command-1..9 to switch between open tabs
 map <D-1> :tabn 1<CR>
