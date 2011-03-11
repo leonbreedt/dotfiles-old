@@ -36,7 +36,7 @@ set laststatus=2
 set listchars=tab:>-,trail:-
 
 " prefix lines with line numbers
-" set number
+set number
 
 " get nice alignment up to 9999
 set numberwidth=5
@@ -59,8 +59,21 @@ set smartcase
 " give us a decent status line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
+" Command-T
+map ,t :CommandT<CR>
+map ,f :CommandTFlush<CR>
+
+if &term == 'xterm-color'
+  " get more colors
+  set t_Co=16
+  " hack for console Command-T mappings
+  let g:CommandTCancelMap=['<ESC>','<C-c>']
+  let g:CommandTSelectPrevMap=['<C-p>', '<C-k>', '<Esc>OA', '<Up>']
+  let g:CommandTSelectNextMap=['<C-n>', '<C-j>', '<Esc>OB', '<Down>']
+end
+
 " use subtle colors for line number
-hi LineNr ctermfg=darkgray
+hi LineNr ctermfg=darkgray guifg=grey50
 
 " recursively scan up for a tags file
 set tags=tags;/,TAGS;/
@@ -68,15 +81,6 @@ set tags=tags;/,TAGS;/
 " NERDTree! 
 map ,, :NERDTreeToggle<CR>
 
-" Command-T
-map ,t :CommandT<CR>
-map ,f :CommandTFlush<CR>
-if &term == 'xterm-color'
-  " hack for console Command-T mappings
-  let g:CommandTCancelMap=['<ESC>','<C-c>']
-  let g:CommandTSelectPrevMap=['<C-p>', '<C-k>', '<Esc>OA', '<Up>']
-  let g:CommandTSelectNextMap=['<C-n>', '<C-j>', '<Esc>OB', '<Down>']
-end
 
 " Steve Hall wrote this function vim@vim.org
     " See :help attr-list for possible attrs to pass
