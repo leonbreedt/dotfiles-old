@@ -46,8 +46,8 @@ export EDITOR=$vim
 export SVN_EDITOR="$EDITOR -f"
 export GIT_EDITOR="$EDITOR -f"
 export VISUAL=$EDITOR
-export HISTSIZE=1000
-export SAVEHIST=1000
+export HISTSIZE=10000
+export SAVEHIST=10000
 export HISTFILE=~/.zsh_history
 export EMAIL=ljb@bitserf.org
 
@@ -61,6 +61,7 @@ is_osx && alias vi=$vim
 is_linux && alias vi=$vim
 is_osx && alias mvi="open -n -a MacVim"
 alias p=padrino
+alias r=rails
 
 # : zsh options
 setopt AUTO_PUSHD
@@ -103,6 +104,7 @@ test -f ~/.profile && source ~/.profile
 autoload -U colors && colors
 autoload -U promptinit && promptinit
 
+# : give us this day our daily git prompt
 prompt bitserf
 
 # : rvm (Ruby Version Manager)
