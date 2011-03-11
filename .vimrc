@@ -75,6 +75,15 @@ map <Leader>f :CommandTFlush<CR>
 " NERDTree! 
 map <Leader>, :NERDTreeToggle<CR>
 
+" Run current buffer through Ruby
+map <Leader>r :w\|:!ruby %<CR>
+
+" Run current buffer through Python
+map <Leader>p :w\|:!python %<CR>
+
+" ZSH loses current environment variables if its the shell.
+set shell=/bin/sh
+
 if &term == 'xterm-color'
   " get more colors
   set t_Co=16

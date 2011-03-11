@@ -27,22 +27,19 @@ has_exe() {
   which $1 2>&1 >/dev/null
   test $? -eq 0
 }
-append_path() {
+prepend_path() {
   p=$1
   if [[ "x${path[(r)$p]}" = "x$p" ]]; then ; else; path=($p $path); fi
 }
 
-# : environment
-is_osx && vim=/Applications/MacVim.app/Contents/MacOS/Vim
-is_linux && vim=vim
-
-# : custom python
+# : homebrew builds
 is_osx && has_exe brew && {
-  append_path /usr/local/Cellar/python/2.7.1/bin
+  prepend_path /usr/local/Cellar/python/2.7.1/bin
+  prepend_path /usr/local/Cellar/vim/7.3.102/bin
 }
 
 export PAGER=less
-export EDITOR=$vim
+export EDITOR=vim
 export SVN_EDITOR="$EDITOR -f"
 export GIT_EDITOR="$EDITOR -f"
 export VISUAL=$EDITOR
@@ -57,9 +54,8 @@ env_dircolors
 # : aliases
 is_osx && alias ls='ls -G'
 is_linux && alias ls='ls --color=auto -F'
-is_osx && alias vi=$vim
-is_linux && alias vi=$vim
-is_osx && alias mvi="open -n -a MacVim"
+is_osx && alias vi=$EDITOR
+is_linux && alias vi=$EDITOR
 alias p=padrino
 alias r=rails
 
