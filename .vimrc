@@ -48,6 +48,9 @@ set softtabstop=2
 " make it obvious when tabs are being used
 set tabstop=8
 
+" 78 characters wide
+set textwidth=78
+
 " spaces, that is all
 set expandtab
 
@@ -59,9 +62,15 @@ set smartcase
 " give us a decent status line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
+" who types \, anyway?
+let mapleader=","
+
 " Command-T
-map ,t :CommandT<CR>
-map ,f :CommandTFlush<CR>
+map <Leader>t :CommandT<CR>
+map <Leader>f :CommandTFlush<CR>
+
+" NERDTree! 
+map <Leader>, :NERDTreeToggle<CR>
 
 if &term == 'xterm-color'
   " get more colors
@@ -70,62 +79,47 @@ if &term == 'xterm-color'
   let g:CommandTCancelMap=['<ESC>','<C-c>']
   let g:CommandTSelectPrevMap=['<C-p>', '<C-k>', '<Esc>OA', '<Up>']
   let g:CommandTSelectNextMap=['<C-n>', '<C-j>', '<Esc>OB', '<Down>']
-end
+endif
+
+if has("gui_running")
+  set background=dark
+  set guifont=Inconsolata:h17
+  set guicursor=n:blinkon0
+
+  " highlight current line
+  set cursorline
+
+  colorscheme desert
+
+  " fix non text lines
+  hi NonText NONE
+  hi NonText ctermfg=1 guifg=LightBlue
+
+  " use Command-1..9 to switch between open tabs
+  map <D-1> :tabn 1<CR>
+  map <D-2> :tabn 2<CR>
+  map <D-3> :tabn 3<CR>
+  map <D-4> :tabn 4<CR>
+  map <D-5> :tabn 5<CR>
+  map <D-6> :tabn 6<CR>
+  map <D-7> :tabn 7<CR>
+  map <D-8> :tabn 8<CR>
+  map <D-9> :tabn 9<CR>
+  map! <D-1> <C-O>:tabn 1<CR>
+  map! <D-2> <C-O>:tabn 2<CR>
+  map! <D-3> <C-O>:tabn 3<CR>
+  map! <D-4> <C-O>:tabn 4<CR>
+  map! <D-5> <C-O>:tabn 5<CR>
+  map! <D-6> <C-O>:tabn 6<CR>
+  map! <D-7> <C-O>:tabn 7<CR>
+  map! <D-8> <C-O>:tabn 8<CR>
+  map! <D-9> <C-O>:tabn 9<CR>
+
+  set columns=80 lines=60
+endif
 
 " use subtle colors for line number
 hi LineNr ctermfg=darkgray guifg=grey50
 
 " recursively scan up for a tags file
-set tags=tags;/,TAGS;/
-
-" NERDTree! 
-map ,, :NERDTreeToggle<CR>
-
-
-" Steve Hall wrote this function vim@vim.org
-    " See :help attr-list for possible attrs to pass
-" disable bold fonts
-function! Highlight_remove_attr(attr)
-    " save selection registers
-    new
-    silent! put
-
-    " get current highlight configuration
-    redir @x
-    silent! highlight
-    redir END
-    " open temp buffer
-    new
-    " paste in
-    silent! put x
-
-    " convert to vim syntax (from Mkcolorscheme.vim,
-    "   http://vim.sourceforge.net/scripts/script.php?script_id=85)
-    " delete empty,"links" and "cleared" lines
-    silent! g/^$\| links \| cleared/d
-    " join any lines wrapped by the highlight command output
-    silent! %s/\n \+/ /
-    " remove the xxx's
-    silent! %s/ xxx / /
-    " add highlight commands
-    silent! %s/^/highlight /
-    " protect spaces in some font names
-    silent! %s/font=\(.*\)/font='\1'/
-
-    " substitute bold with "NONE"
-    execute 'silent! %s/' . a:attr . '\([\w,]*\)/NONE\1/geI'
-    " yank entire buffer
-    normal ggVG
-    " copy
-    silent! normal "xy
-    " run
-    execute @x
-
-    " remove temp buffer
-    bwipeout!
-
-    " restore selection registers
-    silent! normal ggVGy
-    bwipeout!
-endfunction
-autocmd BufNewFile,BufRead * call Highlight_remove_attr("bold")
+:set tags=tags;/,TAGS;/
