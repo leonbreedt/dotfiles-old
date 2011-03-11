@@ -45,6 +45,9 @@ set numberwidth=5
 set shiftwidth=2
 set softtabstop=2
 
+" auto indent, yes please
+set autoindent
+
 " make it obvious when tabs are being used
 set tabstop=8
 
