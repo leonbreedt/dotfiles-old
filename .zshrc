@@ -58,6 +58,7 @@ is_osx && alias vi=$EDITOR
 is_linux && alias vi=$EDITOR
 alias p=padrino
 alias r=rails
+alias s=sqlite3
 
 # : zsh options
 setopt AUTO_PUSHD
