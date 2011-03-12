@@ -68,8 +68,16 @@ def install_entry(srcpath, force=False, pretend=False, destdir="~"):
                 skipped = True
             else:
                 if not pretend:
-                    shutil.copyfile(src, dest)
-                print("Installed File %s" % tildepath)
+                    if os.path.islink(src):
+                      link_from = dest
+                      link_to = os.readlink(src)
+                      if os.path.exists(link_from):
+                        os.unlink(link_from)
+                      os.symlink(link_to, link_from)
+                      print("Installed Symlink %s -> %s" % (link_from, link_to))
+                    else:
+                      shutil.copyfile(src, dest)
+                      print("Installed File %s" % tildepath)
         elif os.path.isdir(src):
             if os.path.exists(dest) and not os.path.isdir(dest):
                 skipped = True
