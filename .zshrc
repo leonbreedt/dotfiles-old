@@ -36,6 +36,8 @@ prepend_path() {
 is_osx && has_exe brew && {
   prepend_path /usr/local/Cellar/python/2.7.1/bin
   prepend_path /usr/local/Cellar/vim/7.3.102/bin
+  prepend_path /usr/local/Cellar/sqlite/3.7.5/bin
+  prepend_path /usr/local/Cellar/ircii/20081115/bin
 }
 
 export PAGER=less
@@ -57,6 +59,8 @@ is_linux && alias ls='ls --color=auto -F'
 is_osx && alias vi=$EDITOR
 is_linux && alias vi=$EDITOR
 alias p=padrino
+alias pdu='padrino rake sq:migrate:up'
+alias pdd='padrino rake sq:migrate:down'
 alias r=rails
 alias s=sqlite3
 
