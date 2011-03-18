@@ -32,14 +32,6 @@ prepend_path() {
   if [[ "x${path[(r)$p]}" = "x$p" ]]; then ; else; path=($p $path); fi
 }
 
-# : homebrew builds
-is_osx && has_exe brew && {
-  prepend_path /usr/local/Cellar/python/2.7.1/bin
-  prepend_path /usr/local/Cellar/vim/7.3.102/bin
-  prepend_path /usr/local/Cellar/sqlite/3.7.5/bin
-  prepend_path /usr/local/Cellar/ircii/20081115/bin
-}
-
 export PAGER=less
 export EDITOR=vim
 export SVN_EDITOR="$EDITOR -f"
