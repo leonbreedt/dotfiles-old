@@ -88,25 +88,25 @@ prompt_bitserf_setup() {
 
 	local -A pc
 	pc[default]='default'
-	pc[date]='Cyan'
-	pc[time]='Blue'
-	pc[host]='Yellow'
+	pc[date]='cyan'
+	pc[time]='blue'
+	pc[host]='yellow'
         if [ "`id -u`" = "0" ]; then
-	    pc[user]='Red'
+	    pc[user]='red'
         else
-	    pc[user]='Green'
+	    pc[user]='green'
         fi
-	pc[punc]='Yellow'
-	pc[line]='Magenta'
-	pc[hist]='Green'
-	pc[path]='_Black'
-	pc[shortpath]='_Black'
-	pc[rc]='Red'
-	pc[scm_branch]='Cyan'
-	pc[scm_commitid]='Yellow'
-	pc[scm_status_dirty]='Red'
-	pc[scm_status_staged]='Green'
-	pc[#]='Yellow'
+	pc[punc]='yellow'
+	pc[line]='magenta'
+	pc[hist]='green'
+	pc[path]='_blue'
+	pc[shortpath]='_black'
+	pc[rc]='red'
+	pc[scm_branch]='cyan'
+	pc[scm_commitid]='yellow'
+	pc[scm_status_dirty]='red'
+	pc[scm_status_staged]='green'
+	pc[#]='yellow'
 	for cn in ${(k)pc}; do
                 local name=$pc[$cn]
                 local att=
