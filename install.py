@@ -71,8 +71,11 @@ def install_entry(srcpath, force=False, pretend=False, destdir="~"):
                     if os.path.islink(src):
                       link_from = dest
                       link_to = os.readlink(src)
-                      if os.path.exists(link_from):
-                        os.unlink(link_from)
+                      try:
+                        if os.path.exists(link_from):
+                          os.unlink(link_from)
+                      except OSError:
+                        pass
                       os.symlink(link_to, link_from)
                       print("Installed Symlink %s -> %s" % (link_from, link_to))
                     else:
