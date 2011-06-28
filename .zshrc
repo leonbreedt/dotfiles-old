@@ -41,6 +41,7 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 export HISTFILE=~/.zsh_history
 export EMAIL=ljb@bitserf.org
+export NODE_PATH=/usr/local/lib/node
 
 env_less
 env_dircolors
@@ -55,6 +56,7 @@ alias pdu='padrino rake sq:migrate:up'
 alias pdd='padrino rake sq:migrate:down'
 alias r=rails
 alias s=sqlite3
+alias grep='grep --color=auto'
 
 # : zsh options
 setopt AUTO_PUSHD
