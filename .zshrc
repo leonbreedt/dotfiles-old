@@ -32,6 +32,8 @@ prepend_path() {
   if [[ "x${path[(r)$p]}" = "x$p" ]]; then ; else; path=($p $path); fi
 }
 
+prepend_path /usr/local/sbin
+
 export PAGER=less
 export EDITOR=vim
 export SVN_EDITOR="$EDITOR -f"
