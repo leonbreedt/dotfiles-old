@@ -14,4 +14,3 @@ Install files into $HOME. Will not clobber any existing files unless
 you specify -f.
 
 $ ./install.py 
-

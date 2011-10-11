@@ -33,6 +33,8 @@ prepend_path() {
 }
 
 prepend_path /usr/local/sbin
+prepend_path ~/.rbenv/bin
+prepend_path ~/.rbenv/shims
 
 export PAGER=less
 export EDITOR=vim
@@ -104,6 +106,5 @@ autoload -U promptinit && promptinit
 # : give us this day our daily git prompt
 prompt bitserf
 
-# : rvm (Ruby Version Manager)
-if [ -e "/usr/local/rvm/scripts/rvm" ]; then; source "/usr/local/rvm/scripts/rvm"; fi
-if [ -e "$HOME/.rvm/scripts/rvm" ]; then; source "$HOME/.rvm/scripts/rvm"; fi
+# : rbenv
+eval "$(rbenv init -)"
