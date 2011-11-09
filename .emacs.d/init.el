@@ -74,8 +74,3 @@
 (if (file-exists-p user-specific-dir)
   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
 (if (file-exists-p user-specific-config) (load user-specific-config))
-
-;;;; Custom themes
-(require 'color-theme)
-(add-to-list 'load-path (concat dotfiles-dir "/themes"))
-(require 'solarized-light-theme)
