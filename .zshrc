@@ -29,9 +29,12 @@ has_exe() {
 }
 prepend_path() {
   p=$1
-  if [[ "x${path[(r)$p]}" = "x$p" ]]; then ; else; path=($p $path); fi
+  idx=${path[(i)$p]}
+  if [[ ${idx} -lt ${#path} ]]; then path[${idx}]=(); fi
+  path=($p $path)
 }
 
+prepend_path /usr/local/bin
 prepend_path /usr/local/sbin
 prepend_path ~/.rbenv/bin
 prepend_path ~/.rbenv/shims
