@@ -60,7 +60,7 @@ is_osx && alias vi=$EDITOR
 is_linux && alias vi=$EDITOR
 alias s=sqlite3
 alias grep='grep --color=auto'
-alias ec=emacsclient
+alias ec='emacsclient -n -a ""'
 
 # : zsh options
 setopt AUTO_PUSHD

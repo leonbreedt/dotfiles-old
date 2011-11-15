@@ -4,20 +4,20 @@
 (require 'solarized-light-theme)
 
 ;; Font size
-(let ((17pt (round (* 17.1 10))))
-  (set-face-attribute 'default (not 'this-frame-only) :height 17pt)) 
+(let ((18pt (round (* 18.1 10))))
+  (set-face-attribute 'default (not 'this-frame-only) :height 18pt)) 
 
 ;; Font face
 (set-face-attribute 'default (not 'this-frame-only)
-                    :font "Consolas")
+                    :font "Inconsolata")
 
 ;; Window size
 (if (window-system)
     (set-frame-width (selected-frame) 90))
 (if (window-system)
-    (set-frame-height (selected-frame) 45))
+    (set-frame-height (selected-frame) 55))
 
-;; Cursor color
+;; color
 (set-cursor-color "SlateGray")
 
 ;; Default directory
@@ -29,3 +29,6 @@
 ;; Disable visible bell, and beeping
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
+
+;; Start server by default
+(server-start)
