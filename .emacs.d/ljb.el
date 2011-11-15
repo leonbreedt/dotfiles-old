@@ -18,4 +18,14 @@
     (set-frame-height (selected-frame) 45))
 
 ;; Cursor color
-(set-cursor-color "SlateGray") 
+(set-cursor-color "SlateGray")
+
+;; Default directory
+(setq default-directory "~/Projects")
+
+;; Italics
+(set-face-italic-p 'italic nil)
+
+;; Disable visible bell, and beeping
+(setq visible-bell nil)
+(setq ring-bell-function 'ignore)

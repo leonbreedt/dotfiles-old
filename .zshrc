@@ -58,12 +58,9 @@ is_osx && alias ls='ls -G'
 is_linux && alias ls='ls --color=auto -F'
 is_osx && alias vi=$EDITOR
 is_linux && alias vi=$EDITOR
-alias p=padrino
-alias pdu='padrino rake sq:migrate:up'
-alias pdd='padrino rake sq:migrate:down'
-alias r=rails
 alias s=sqlite3
 alias grep='grep --color=auto'
+alias ec=emacsclient
 
 # : zsh options
 setopt AUTO_PUSHD
