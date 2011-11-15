@@ -34,6 +34,7 @@ prepend_path() {
   path=($p $path)
 }
 
+prepend_path ~/.bin
 prepend_path /usr/local/bin
 prepend_path /usr/local/sbin
 prepend_path ~/.rbenv/bin
