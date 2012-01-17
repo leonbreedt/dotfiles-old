@@ -15,7 +15,7 @@
 (if (window-system)
     (set-frame-width (selected-frame) 90))
 (if (window-system)
-    (set-frame-height (selected-frame) 55))
+    (set-frame-height (selected-frame) 50))
 
 ;; color
 (set-cursor-color "SlateGray")
