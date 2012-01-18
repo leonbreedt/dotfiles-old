@@ -41,6 +41,11 @@ colorword() {
 
 	echo "%{"$'\e['${(j:;:)s}m"%}"
 }
+battery_charge() {
+  if [ "`uname`" = "Darwin" ]; then
+    echo `~/.zsh/helpers/battery-charge` 2>/dev/null
+  fi
+}
 
 prompt_bitserf_setup() {
 	local verbose
@@ -142,10 +147,10 @@ prompt_bitserf_setup() {
 	PROMPT+="\$(prompt_bitserf_scm_branch)"
 	PROMPT+="$pc[#]%#$pc[reset] "
 
-	RPROMPT=
-	if [ $verbose ]; then
-		RPROMPT+="$p_date "
-	fi
+        RPROMPT=
+        if [ $verbose ]; then
+	  RPROMPT+='$(print $(battery_charge)) '
+        fi
 
 	export PROMPT RPROMPT
 	precmd_functions+='prompt_bitserf_precmd'
