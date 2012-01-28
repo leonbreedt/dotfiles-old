@@ -1,5 +1,6 @@
 == Installation
 
-  $ sh < (https://raw.github.com/bitserf/dotfiles/master/.bin/sync-dotfiles.sh)
+  $ git clone git://github.com/bitserf/dotfiles.git dotfiles
+  $ ./dotfiles/bin/link-dotfiles.rb
 
 Only tested on OS X and Ubuntu Linux.
