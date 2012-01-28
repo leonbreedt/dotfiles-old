@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 # link dotfiles into $HOME
 
-require 'pathname'
-
 def link(source, dest, force=false)
   if File.symlink?(dest)
     target = File.readlink(dest)
