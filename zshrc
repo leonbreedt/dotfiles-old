@@ -94,3 +94,6 @@ prompt bitserf
 
 ## rbenv
 has_exe rbenv && eval "$(rbenv init -)"
+
+## avoid annoyance prompt on first login.
+exit 0
