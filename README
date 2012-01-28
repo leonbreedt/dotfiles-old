@@ -1,16 +1,5 @@
-These are the dot files I use on every UNIX system I have an account on,
-though most of the time that is my MacBook, so some things may not work 100%
-on Linux or other systems.
+== Installation
 
-Preparing:
+  $ sh < (https://raw.github.com/bitserf/dotfiles/master/.bin/sync-dotfiles.sh)
 
-$ git clone git://github.com/bitserf/dotfiles.git bitserf-dotfiles
-$ cd bitserf-dotfiles
-$ git submodule update --init
-$ cd .vim
-$ git submodule update --init
-
-Install files into $HOME. Will not clobber any existing files unless
-you specify -f.
-
-$ ./install.py 
+Only tested on OS X and Ubuntu Linux.

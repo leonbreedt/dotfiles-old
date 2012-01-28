@@ -1,0 +1,6 @@
+modules
+vim-colors-solarized
+vim-fugitive
+vim-make-testrunner
+vim-markdown
+vim-matchit
