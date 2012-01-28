@@ -13,14 +13,22 @@ end
 parser.parse!
 
 def link(source, dest, force=false)
-  if File.symlink?(dest) || File.exists?(dest)
-    if force || File.symlink?(dest)
-      puts "removing #{dest}"
+  if File.symlink?(dest)
+    target = File.readlink(dest)
+    if target == source
+      return
+    else
+      puts "removing #{dest} (symlink)"
+      File.unlink(dest)
+    end
+  elsif File.exists?(dest)
+    if force && File.file?(dest)
+      puts "removing #{dest} (forced)"
       File.unlink(dest)
     end
   end
   if File.exists?(dest)
-    abort("error: #{dest} already exists, and is not a symlink")
+    abort("error: #{dest} already exists")
   end
   File.symlink(source, dest)
   puts "linked #{dest}"

@@ -6,9 +6,13 @@ REMOTE=git://github.com/bitserf/dotfiles.git
 LOCAL=$HOME/.dotfiles
 
 if [ -e $LOCAL ]; then
-  git --git-dir=$LOCAL pull origin master
+  pushd $LOCAL
+  git pull origin master
+  popd
 else
   git clone $REMOTE $LOCAL
 fi
 ruby $LOCAL/bin/link-dotfiles.rb
-git --git-dir=$LOCAL submodule update --init
+pushd $LOCAL
+git submodule update --init
+popd
