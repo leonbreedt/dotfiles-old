@@ -4,7 +4,7 @@ syntax_check=`ruby -c $@ 2>&1`
 if [ "$syntax_check" = "Syntax OK" ]; then
   output=`ruby -r test/unit $@ 2>&1`
   failed=$?
-  if echo "$output" | grep "Run options:" &>/dev/null; then
+  if echo "$output" | grep "^Finished" &>/dev/null; then
     echo "$output"
     exit $failed
   else

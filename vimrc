@@ -131,6 +131,9 @@ let g:CommandTSelectNextMap=['<C-n>', '<C-j>', '<Esc>OB', '<Down>']
 " set background=dark
 colorscheme solarized
 
+" default error message not that readable
+hi ErrorMsg term=reverse cterm=reverse ctermfg=1 ctermbg=0 guifg=White guibg=Red
+
 " some GUI settings
 if has("gui_running")
   set guifont=Inconsolata:h19
