@@ -107,8 +107,8 @@ prompt_bitserf_setup() {
 	pc[scm_status_unstaged]='yellow'
 	pc[scm_status_unmerged]='red'
 	pc[scm_status_staged]='green'
-	pc[scm_status_ahead]='default'
-	pc[scm_status_behind]='default'
+	pc[scm_status_ahead]='magenta'
+	pc[scm_status_behind]='cyan'
 	pc[#]='white'
 	for cn in ${(k)pc}; do
                 local name=$pc[$cn]
