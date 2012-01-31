@@ -84,8 +84,16 @@ setopt NO_RM_STAR_WAIT
 setopt NO_HUP
 setopt PROMPT_SUBST
 
-## key bindings
+## keybinds
+backward-delete-to-slash() {
+  local WORDCHARS=${WORDCHARS//\//}
+  zle .backward-delete-word
+}
+zle -N backward-delete-to-slash
+
 bindkey -e
+bindkey '^W' backward-delete-to-slash
+bindkey '^[w' backward-delete-to-slash
 
 ## prompt
 autoload -U colors && colors
