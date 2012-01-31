@@ -29,9 +29,9 @@ function MakeTestRunner(...) "{{{1
     redraw!
     let error = s:GetFirstError()
     if error != ''
-      call s:Bar("red", error)
+      call s:Bar("red", "[FAIL] " . error)
     else
-      call s:Bar("green", "All tests passed")
+      call s:Bar("green", "[OK] All tests passed")
     endif
   else
     exec "make! %"

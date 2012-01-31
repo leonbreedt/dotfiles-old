@@ -108,7 +108,7 @@ set winheight=999
 
 function SetupRubyUnitTest()
   compiler rubyunit
-  set makeprg=ruby\ -Ilib\ -I../lib\ -r\ test/unit
+  set makeprg=$HOME/.vim/bundle/vim-make-testrunner/testrb_with_syntaxcheck.sh\ -Ilib\ -I../lib
   nnoremap <leader>t :call MakeTestRunner(1)<cr>
   nnoremap <leader>T :call MakeTestRunner(0)<cr>
 endfunction
