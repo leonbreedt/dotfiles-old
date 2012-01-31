@@ -133,8 +133,8 @@ prompt_bitserf_setup() {
                 #PROMPT+=":"
 		PROMPT+="$pc[host]%m$pc[reset]"
 	fi
-	PROMPT+="%(?..$pc[rc][%1v]$pc[reset])"
-	PROMPT+=" $pc[shortpath]%1~$pc[reset]"
+	PROMPT+="%(?. .$pc[rc] %1v $pc[reset])"
+	PROMPT+="$pc[shortpath]%1~$pc[reset]"
 	#PROMPT+="\$(prompt_bitserf_scm_status)"
 	#PROMPT+="
 #"
