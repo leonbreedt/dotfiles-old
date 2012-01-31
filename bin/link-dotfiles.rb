@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # link dotfiles into $HOME
 
+require 'pathname'
+
 def link(source, dest, force=false)
   if File.symlink?(dest)
     target = File.readlink(dest)
@@ -13,8 +15,8 @@ def link(source, dest, force=false)
   puts "linked #{dest}"
 end
 
-dir = File.dirname(File.dirname(File.realpath(__FILE__)))
-entries = Dir.entries(dir).reject{|e| e[0] == '.' || e == 'README'}
+dir = File.dirname(File.dirname(Pathname.new(__FILE__).realpath))
+entries = Dir.entries(dir).reject{|e| e[0,1] == '.' || e == 'README'}
 entries.each do |fn|
   source = File.join(dir, fn)
   dest = File.join(ENV['HOME'], ".#{fn}")
