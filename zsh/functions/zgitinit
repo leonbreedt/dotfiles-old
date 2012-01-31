@@ -194,6 +194,31 @@ zgit_hasunmerged() {
 	fi
 }
 
+zgit_ahead_behind() {
+	zgit_isgit || return 1
+
+        local branch remote merge remote_ref lines total ahead behind
+
+	branch=$(zgit_head)
+	[ -z "$branch" ] && return 1
+	remote=$(git config branch.$branch.remote)
+	[ -z "$remote" ] && return 1
+	merge=$(git config branch.$branch.merge)
+	if [ "$remote" = "." ]; then
+		remote_ref=$merge
+	else
+		remote_ref=refs/remotes/$remote/$merge[12,$#merge]
+	fi
+        lines=($(git rev-list --left-right $remote_ref...HEAD))
+        total=$#lines
+        ahead=$(echo ${(F)lines} | grep ^\> | wc -l)
+        [ -z "$ahead" ] && ahead=0
+        behind=$((total - ahead))
+        [ -z "$behind" ] && behind=0
+
+        echo "$ahead $behind"
+}
+
 zgit_svnhead() {
 	zgit_isgit || return 1
 

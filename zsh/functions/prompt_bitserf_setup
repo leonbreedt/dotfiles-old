@@ -107,6 +107,8 @@ prompt_bitserf_setup() {
 	pc[scm_status_unstaged]='yellow'
 	pc[scm_status_unmerged]='red'
 	pc[scm_status_staged]='green'
+	pc[scm_status_ahead]='default'
+	pc[scm_status_behind]='default'
 	pc[#]='white'
 	for cn in ${(k)pc}; do
                 local name=$pc[$cn]
@@ -265,6 +267,10 @@ prompt_bitserf_scm_branch() {
 	zgit_isgit || return
 	local -A pc
 	pc=(${(kv)bitserf_prompt_colors})
+        local sync_stat ahead behind
+        sync_stat=($(zgit_ahead_behind))
+        ahead=$sync_stat[1]
+        behind=$sync_stat[2]
 
 	echo -n " $pc[scm_branch]$(zgit_head)"
 
@@ -283,6 +289,14 @@ prompt_bitserf_scm_branch() {
 
 		if zgit_hasuntracked; then
                 	echo -n "$pc[scm_status_untracked]●"
+		fi
+
+		if [ $ahead -gt 0 ]; then
+			echo -n "$pc[scm_status_ahead]↑$ahead"
+		fi
+
+		if [ $behind -gt 0 ]; then
+			echo -n "$pc[scm_status_behind]↓$behind"
 		fi
 	fi
 
