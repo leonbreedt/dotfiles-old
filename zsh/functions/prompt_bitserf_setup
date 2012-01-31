@@ -267,10 +267,9 @@ prompt_bitserf_scm_branch() {
 	zgit_isgit || return
 	local -A pc
 	pc=(${(kv)bitserf_prompt_colors})
+
         local sync_stat ahead behind
         sync_stat=($(zgit_ahead_behind))
-        ahead=$sync_stat[1]
-        behind=$sync_stat[2]
 
 	echo -n " $pc[scm_branch]$(zgit_head)"
 
@@ -291,12 +290,15 @@ prompt_bitserf_scm_branch() {
                 	echo -n "$pc[scm_status_untracked]●"
 		fi
 
-		if [ $ahead -gt 0 ]; then
-			echo -n "$pc[scm_status_ahead]↑$ahead"
-		fi
-
-		if [ $behind -gt 0 ]; then
-			echo -n "$pc[scm_status_behind]↓$behind"
+                if [ $#sync_stat -gt 0 ]; then
+			ahead=$sync_stat[1]
+			behind=$sync_stat[2]
+			if [ $ahead -gt 0 ]; then
+				echo -n "$pc[scm_status_ahead]↑$ahead"
+			fi
+			if [ $behind -gt 0 ]; then
+				echo -n "$pc[scm_status_behind]↓$behind"
+			fi
 		fi
 	fi
 
