@@ -99,7 +99,11 @@ prompt_bitserf_setup() {
 	pc[line]='magenta'
 	pc[hist]='green'
 	pc[path]='_blue'
-	pc[shortpath]='_black'
+        if [[ $TERM == linux ]]; then
+          pc[shortpath]='_white'
+        else
+          pc[shortpath]='_black'
+        fi
 	pc[rc]='red'
 	pc[scm_branch]='cyan'
 	pc[scm_commitid]='yellow'
