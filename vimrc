@@ -106,16 +106,24 @@ set winheight=5
 set winminheight=5
 set winheight=999
 
-function SetupRubyUnitTest()
+function SetupTestUnit()
   compiler rubyunit
-  set makeprg=$HOME/.vim/bundle/vim-make-testrunner/testrb_with_syntaxcheck.sh\ -Ilib\ -I../lib
+  set makeprg=$HOME/.vim/bundle/vim-make-testrunner/test_unit_runner.sh\ -Ilib\ -I../lib
+  nnoremap <leader>t :call MakeTestRunner(1)<cr>
+  nnoremap <leader>T :call MakeTestRunner(0)<cr>
+endfunction
+
+function SetupRSpec()
+  compiler rubyunit
+  set makeprg=$HOME/.vim/bundle/vim-make-testrunner/rspec_runner.sh\ -Ilib\ -I../lib
   nnoremap <leader>t :call MakeTestRunner(1)<cr>
   nnoremap <leader>T :call MakeTestRunner(0)<cr>
 endfunction
 
 " Ensure makeprg gets set for testing
-autocmd! BufNewFile,BufReadPre,FileReadPre test_*.rb call SetupRubyUnitTest()
-autocmd! BufNewFile,BufReadPre,FileReadPre *_test.rb call SetupRubyUnitTest()
+autocmd! BufNewFile,BufReadPre,FileReadPre test_*.rb call SetupTestUnit()
+autocmd! BufNewFile,BufReadPre,FileReadPre *_test.rb call SetupTestUnit()
+autocmd! BufNewFile,BufReadPre,FileReadPre *_spec.rb call SetupRSpec()
 
 " highlighting customizations
 let ruby_operators = 1
