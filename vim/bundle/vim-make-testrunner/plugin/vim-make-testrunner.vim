@@ -16,6 +16,7 @@ function MakeTestRunner(...) "{{{1
   silent! w
 
   if is_quiet 
+    let $VERBOSE = 0
     let s:old_sp = &shellpipe
     if has('unix')
       set shellpipe=&> "quieter make output
@@ -34,6 +35,7 @@ function MakeTestRunner(...) "{{{1
       call s:Bar("green", "[OK] All tests passed")
     endif
   else
+    let $VERBOSE = 1
     exec "make! %"
   endif
 endfunction
