@@ -108,14 +108,14 @@ set winheight=999
 
 function SetupTestUnit()
   compiler rubyunit
-  set makeprg=$HOME/.vim/bundle/vim-make-testrunner/test_unit_runner.sh\ -Ilib\ -I../lib
+  set makeprg=$HOME/.vim/bundle/vim-make-testrunner/test_unit_runner.sh
   nnoremap <leader>t :call MakeTestRunner(1)<cr>
   nnoremap <leader>T :call MakeTestRunner(0)<cr>
 endfunction
 
 function SetupRSpec()
   compiler rubyunit
-  set makeprg=$HOME/.vim/bundle/vim-make-testrunner/rspec_runner.sh\ -Ilib\ -I../lib
+  set makeprg=$HOME/.vim/bundle/vim-make-testrunner/rspec_runner.sh
   nnoremap <leader>t :call MakeTestRunner(1)<cr>
   nnoremap <leader>T :call MakeTestRunner(0)<cr>
 endfunction
