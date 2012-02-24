@@ -3,3 +3,4 @@
 *.bundle
 Makefile
 .DS_Store
+vim/.netrwhist
