@@ -52,6 +52,7 @@ alias vi=vim
 alias s=sqlite3
 alias grep='grep --color=auto'
 alias ec='emacsclient -n -a ""'
+alias ucoc="uncrustify -q -l OC -c ~/.uncrustify.objc.cfg -f "
 
 ## zsh options
 setopt AUTO_PUSHD
