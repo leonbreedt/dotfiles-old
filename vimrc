@@ -84,16 +84,6 @@ set splitright
 let mapleader=","
 
 " global mappings for all buffers
-nnoremap <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-" Open files, limited to the directory of the current file, with <leader>gf
-map <leader>gf :CommandTFlush<cr>\|:CommandT %%<cr>
-nnoremap <leader>, :NERDTreeToggle<cr>
-nnoremap <leader>m :make<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gl :Glog<cr>
-nnoremap <leader>gpm :Git push origin master<cr>
-
 " stolen from Gary Bernhardt
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
