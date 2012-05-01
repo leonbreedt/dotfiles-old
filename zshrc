@@ -38,6 +38,7 @@ export SAVEHIST=10000
 export HISTFILE=~/.zsh_history
 export EMAIL=ljb@bitserf.org
 export NODE_PATH=/usr/local/lib/node
+export CDPATH=.:$HOME:$HOME/dev/projects
 
 prepend_path ~/.bin
 prepend_path /usr/local/bin

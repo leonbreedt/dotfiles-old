@@ -115,18 +115,22 @@ autocmd! BufNewFile,BufReadPre,FileReadPre test_*.rb call SetupTestUnit()
 autocmd! BufNewFile,BufReadPre,FileReadPre *_test.rb call SetupTestUnit()
 autocmd! BufNewFile,BufReadPre,FileReadPre *_spec.rb call SetupRSpec()
 
+" When re-opening file jump to last known position if its not invalid
+" and not in an event handler -- from grb
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" |
+  \ endif
+
+" CtrlP
+let g:ctrlp_map = '<leader>f'
+let g:ctrlp_working_path_mode = 2
+
 " highlighting customizations
 let ruby_operators = 1
 hi LineNr ctermfg=darkgray guifg=grey50
 
-" hacks and workarounds
-" Command-T menus don't seem to work right without this
-let g:CommandTCancelMap=['<ESC>','<C-c>']
-let g:CommandTSelectPrevMap=['<C-p>', '<C-k>', '<Esc>OA', '<Up>']
-let g:CommandTSelectNextMap=['<C-n>', '<C-j>', '<Esc>OB', '<Down>']
-
 " solarized ftw
-" set background=dark
 colorscheme solarized
 
 " default error message not that readable
