@@ -106,7 +106,7 @@ prompt bitserf
 has_exe rbenv && eval "$(rbenv init -)"
 
 ## grc
-source "`brew --prefix grc`/etc/grc.bashrc"
+has_exe brew && source "`brew --prefix grc`/etc/grc.bashrc"
 
 ## avoid annoyance prompt on first login.
 :
