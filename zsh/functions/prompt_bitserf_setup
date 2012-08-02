@@ -113,7 +113,7 @@ prompt_bitserf_setup() {
 	pc[scm_status_staged]='green'
 	pc[scm_status_ahead]='magenta'
 	pc[scm_status_behind]='cyan'
-	pc[#]='white'
+	pc[#]='_green'
 	for cn in ${(k)pc}; do
                 local name=$pc[$cn]
                 local att=

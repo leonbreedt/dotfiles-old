@@ -132,6 +132,7 @@ hi LineNr ctermfg=darkgray guifg=grey50
 
 " solarized ftw
 colorscheme solarized
+set background=light
 
 " default error message not that readable
 hi ErrorMsg term=reverse cterm=reverse ctermfg=1 ctermbg=0 guifg=White guibg=Red

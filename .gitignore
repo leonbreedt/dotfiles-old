@@ -4,3 +4,4 @@
 Makefile
 .DS_Store
 vim/.netrwhist
+bin/xu*
