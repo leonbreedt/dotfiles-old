@@ -10,4 +10,4 @@ else
   offlineimap -u machineui >$tmp
   n=$(grep INBOX $tmp | grep 'Copy message from' | wc -l | awk '{ print $1 }')
 fi
-[ $n -gt 0 ] && terminal-notifier -message 'You have new mail' -title 'Mail' -subtitle "$n new messages" >/dev/null
+[ $n -gt 0 ] && terminal-notifier -message 'You have new mail' -title 'Mail' -subtitle "$n new messages" -group Mutt >/dev/null
