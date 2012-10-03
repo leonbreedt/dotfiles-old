@@ -1,5 +1,5 @@
 # awesome_print
-require 'ap'
+require 'awesome_print'
 
 # colors
 require 'wirb'

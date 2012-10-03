@@ -1,0 +1,42 @@
+[general]
+ui = TTY.TTYUI
+accounts = LeonBreedt
+pythonfile=~/.mutt/offlineimap.py
+fsync = False
+
+[Account LeonBreedt]
+localrepository = LeonBreedt-Local
+remoterepository = LeonBreedt-Remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Repository LeonBreedt-Local]
+type = Maildir
+localfolders = ~/.mail/ljb-bitserf-org
+nametrans = lambda folder: {'drafts':  '[Gmail]/Drafts',
+                            'sent':    '[Gmail]/Sent Mail',
+                            'starred': '[Gmail]/Starred',
+                            'trash':   '[Gmail]/Trash',
+                            'archive': '[Gmail]/All Mail',
+                            }.get(folder, folder)
+
+[Repository LeonBreedt-Remote]
+maxconnections = 1
+type = Gmail
+remoteuser = ljb@bitserf.org
+remotepasseval = get_keychain_pass(account="ljb@bitserf.org", server="imap.gmail.com")
+realdelete = no
+nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
+                            '[Gmail]/Sent Mail': 'sent',
+                            '[Gmail]/Starred':   'starred',
+                            '[Gmail]/Trash':     'trash',
+                            '[Gmail]/All Mail':  'archive',
+                            }.get(folder, folder)
+folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
+                                             'chanthaly',
+                                             'notes',
+                                             'work',
+                                             'external',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/Spam',
+                                             ]

@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
 # link dotfiles into $HOME
+# also creates ~/.mail needed by Mutt config
 
 require 'pathname'
+require 'fileutils'
 
 def link(source, dest, force=false)
   if File.symlink?(dest)
@@ -22,3 +24,9 @@ entries.each do |fn|
   dest = File.join(ENV['HOME'], ".#{fn}")
   link(source, dest)
 end
+mail_dir = File.join(ENV['HOME'], '.mail')
+unless Dir.exists?(mail_dir)
+  puts "mkdir #{mail_dir}"
+  FileUtils.mkdir_p(mail_dir)
+end
+
