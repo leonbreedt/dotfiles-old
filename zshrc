@@ -40,11 +40,11 @@ export EMAIL=ljb@bitserf.org
 export NODE_PATH=/usr/local/lib/node
 export CDPATH=.:$HOME:$HOME/dev/projects
 
-prepend_path ~/.bin
 prepend_path /usr/local/bin
 prepend_path /usr/local/sbin
 prepend_path ~/.rbenv/bin
 prepend_path ~/.rbenv/shims
+prepend_path ~/.bin
 
 ## aliases
 is_osx && alias ls='ls -G'

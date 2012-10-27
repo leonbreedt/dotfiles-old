@@ -1,39 +1,15 @@
 #!/bin/sh
+# Launch Clojure REPL (no arguments) or program (arguments).
 
-# clj - Clojure launcher script
+clj_classpath="$CLASSPATH:/usr/local/Cellar/clojure/1.4.0/clojure-1.4.0.jar:$PWD"
+clj_break_chars="\(\){}[],^%\$#@\"\";:''|\\"
+clj_completions="$HOME/.clj_completions"
 
-BREAK_CHARS="\(\){}[],^%\$#@\"\";:''|\\"
-
-cljjar='lib/clojure.jar'
-cljclass='clojure.main'
-cljcompletions='.clj_completions'
-
-dir=$0
-while [ -h "$dir" ]; do
-  ls=`ls -ld "$dir"`
-  link=`expr "$ls" : '.*-> \(.*\)$'`
-
-  if expr "$link" : '/.*' > /dev/null; then
-    dir="$link"
-  else
-    dir=`dirname "$dir"`"/$link"
-  fi
-done
-
-dir=`dirname $dir`
-dir=`cd "$dir" > /dev/null && pwd`
-cljjar="$dir/../$cljjar"
-cp="${PWD}:${cljjar}"
-cljcompletions="$dir/../$cljcompletions"
-
-# Add extra jars as specified by `.clojure` file
-# Borrowed from <http://github.com/mreid/clojure-framework>
-if [ -f .clojure ]; then
-  cp=$cp:`cat .clojure`
-fi
+[ -f "$clj_completions" ] || touch "$clj_completions"
 
 if [ $# -eq 0 ]; then
-  rlwrap --remember -c -b $BREAK_CHARS -f $cljcompletions java -cp $cp $cljclass
+  exec rlwrap --remember -c -b "$clj_break_chars" -f "$clj_completions" \
+       java -classpath "$clj_classpath" clojure.main
 else
-  exec java -classpath $cp $cljclass $*
+  exec java -classpath "$clj_classpath" clojure.main $*
 fi
