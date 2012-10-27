@@ -137,6 +137,8 @@ set background=dark
 " default error message not that readable
 hi ErrorMsg term=reverse cterm=reverse ctermfg=1 ctermbg=0 guifg=White guibg=Red
 
+let g:Powerline_symbols = 'fancy'
+
 " some GUI settings
 if has("gui_running")
   set guifont=Inconsolata:h19
