@@ -25,7 +25,7 @@ entries.each do |fn|
   link(source, dest)
 end
 mail_dir = File.join(ENV['HOME'], '.mail')
-unless Dir.exists?(mail_dir)
+unless File.directory?(mail_dir)
   puts "mkdir #{mail_dir}"
   FileUtils.mkdir_p(mail_dir)
 end
