@@ -1,3 +1,17 @@
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline_symbols = {}
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline#extensions#branch#enabled = 1
+
+" ctrl-p
+let g:ctrlp_map = '<c-p>'
+
 " pathogen ftw
 call pathogen#runtime_append_all_bundles()
 
@@ -40,7 +54,10 @@ set incsearch
 
 " always show status line
 set laststatus=2
+set noshowmode
 set listchars=tab:>-,trail:-
+
+
 
 " prefix lines with line numbers,
 " get nice alignment up to 9999
@@ -69,7 +86,7 @@ set nowrap
 set smartcase
 
 " give us a decent status line
-set statusline=%F%m%y\ l:%l/%L\ c:%c
+" set statusline=%F%m%y\ l:%l/%L\ c:%c
 
 " recursively scan up for a tags file
 set tags=tags;/,TAGS;/
@@ -131,8 +148,8 @@ let ruby_operators = 1
 hi LineNr ctermfg=darkgray guifg=grey50
 
 " solarized ftw
-colorscheme solarized
-set background=dark
+" colorscheme solarized
+" set background=light
 
 " default error message not that readable
 hi ErrorMsg term=reverse cterm=reverse ctermfg=1 ctermbg=0 guifg=White guibg=Red
