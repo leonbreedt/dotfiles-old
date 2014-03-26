@@ -1,6 +1,4 @@
-#!/bin/sh
-
-set -e
+#!/bin/bash
 
 REMOTE=git://github.com/bitserf/dotfiles.git
 LOCAL=$HOME/.dotfiles
