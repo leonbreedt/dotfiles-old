@@ -11,7 +11,7 @@ else
   cd $LOCAL
 fi
 ruby bin/link-dotfiles.rb
-git submodule update --init
+git submodule update --init || true
 
 # OS X only
 function install_keg()
@@ -34,3 +34,4 @@ which brew && {
   done
   install_keg mutt --with-slang
 }
+true
