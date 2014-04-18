@@ -110,5 +110,10 @@ has_exe rbenv && eval "$(rbenv init -)"
 ## grc
 has_exe brew && source "`brew --prefix grc`/etc/grc.bashrc"
 
+## case-insensitive completion
+autoload -U compinit
+compinit -C
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
 ## avoid annoyance prompt on first login.
 :
