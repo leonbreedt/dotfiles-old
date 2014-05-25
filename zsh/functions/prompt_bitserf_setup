@@ -89,7 +89,7 @@ prompt_bitserf_setup() {
 	pc[default]='default'
 	pc[date]='cyan'
 	pc[time]='blue'
-	pc[host]='yellow'
+	pc[host]='_yellow'
         if [ "`id -u`" = "0" ]; then
 	    pc[user]='red'
         else
@@ -102,7 +102,7 @@ prompt_bitserf_setup() {
         if [[ $TERM == linux ]]; then
           pc[shortpath]='_white'
         else
-          pc[shortpath]='_black'
+          pc[shortpath]='_blue'
         fi
 	pc[rc]='red'
 	pc[scm_branch]='cyan'
@@ -122,7 +122,7 @@ prompt_bitserf_setup() {
                     att=01
                 fi
 
-                pc[${cn}]=$(colorword $name)
+                pc[${cn}]=$(colorword $name . $att)
 	done
 	pc[reset]=$(colorword . . 00)
 

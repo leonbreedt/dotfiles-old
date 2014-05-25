@@ -115,5 +115,8 @@ autoload -U compinit
 compinit -C
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+## syntax highlighting
+source ~/.zsh/functions/zsh-syntax-highlighting.zsh
+
 ## avoid annoyance prompt on first login.
 :
