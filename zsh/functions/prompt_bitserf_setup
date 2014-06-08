@@ -125,7 +125,7 @@ prompt_bitserf_setup() {
 	#p_date="$pc[date]%D{%Y-%m-%d} $pc[time]%D{%T}$pc[reset]"
 	#p_line="$pc[line]%y$pc[reset]"
 
-	PROMPT=
+	PROMPT="$pc[reset]"
 	if [ $verbose ]; then
     	        #PROMPT+="$pc[user]%n$pc[reset]"
                 #PROMPT+=":"
