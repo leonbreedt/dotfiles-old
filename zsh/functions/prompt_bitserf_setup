@@ -4,14 +4,6 @@
 autoload -U zgitinit
 zgitinit
 
-prompt_bitserf_help () {
-  cat <<'EOF'
-
-  prompt bitserf
-
-EOF
-}
-
 revstring() {
 	git describe --always $1 2>/dev/null ||
 	git rev-parse --short $1 2>/dev/null
@@ -89,7 +81,7 @@ prompt_bitserf_setup() {
 	pc[default]='default'
 	pc[date]='cyan'
 	pc[time]='blue'
-	pc[host]='_yellow'
+	pc[host]='yellow'
         if [ "`id -u`" = "0" ]; then
 	    pc[user]='red'
         else
@@ -119,7 +111,7 @@ prompt_bitserf_setup() {
                 local att=
                 if [ $name[1] = "_" ]; then
                     name=$name[2,${#name}]
-                    att=01
+                    att=bold
                 fi
 
                 pc[${cn}]=$(colorword $name . $att)

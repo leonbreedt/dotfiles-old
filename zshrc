@@ -41,11 +41,10 @@ export NODE_PATH=/usr/local/lib/node
 export CDPATH=.:$HOME:$HOME/Code
 export RBENV_ROOT=/usr/local/var/rbenv
 
-prepend_path /usr/local/bin
-prepend_path /usr/local/sbin
-prepend_path ~/.rbenv/bin
-prepend_path ~/.rbenv/shims
+prepend_path $RBENV_ROOT/bin
+prepend_path $RBENV_ROOT/shims
 prepend_path ~/.bin
+prepend_path /usr/local/bin
 
 ## aliases
 is_osx && alias ls='ls -G'
@@ -53,9 +52,6 @@ is_linux && alias ls='ls --color=auto -F'
 alias vi=vim
 alias s=sqlite3
 alias grep='grep --color=auto'
-alias ec='emacsclient -n -a ""'
-alias ucoc="uncrustify -q -l OC -c ~/.uncrustify.objc.cfg -f "
-alias mutt="pushd ~/Desktop >/dev/null && mutt; popd >/dev/null"
 
 ## zsh options
 setopt AUTO_PUSHD
@@ -99,11 +95,6 @@ bindkey -e
 bindkey '^W' backward-delete-to-slash
 bindkey '^[w' backward-delete-to-slash
 
-## prompt
-autoload -U colors && colors
-autoload -U promptinit && promptinit
-prompt bitserf
-
 ## rbenv
 has_exe rbenv && eval "$(rbenv init -)"
 
@@ -116,7 +107,12 @@ compinit -C
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 ## syntax highlighting
-source ~/.zsh/functions/zsh-syntax-highlighting.zsh
+source ~/.zsh/functions/syntax_highlighting
+
+## prompt
+autoload -U colors && colors
+autoload -U promptinit && promptinit
+prompt bitserf
 
 ## avoid annoyance prompt on first login.
 :
