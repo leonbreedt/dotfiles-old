@@ -4,7 +4,7 @@ ZSH_THEME="bitserf"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 plugins=(git zsh-syntax-highlighting)
-source $ZSH/oh-my-zsh.sh
+source ~/.oh-my-zsh/oh-my-zsh.sh
 
 ## environment
 export EDITOR=vim
@@ -22,11 +22,12 @@ export CLICOLOR=1
 export LSCOLORS=exfxcxdxbxegedabagacad
 
 ## aliases
-alias ls='ls -GFh'
+# use ls that is aware of 'hidden' chflags setting.
+alias ls='/Users/ljb/.bin/ls -GFh'
+alias gpg='gpg2'
 
 ## zsh options
 setopt NO_BEEP
 setopt AUTO_PARAM_SLASH
 setopt NO_AUTO_MENU
 setopt NO_MENU_COMPLETE
-
