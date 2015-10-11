@@ -51,7 +51,7 @@ zstyle ':vcs_info:*:*' nvcsformats "%2(~.%1d.%1d) " ""
 
 # Define prompts.
 PROMPT_PATH_COLOR="%(0?.%{$PROMPT_SUCCESS_COLOR%}.%{$PROMPT_FAILURE_COLOR%})"
-PROMPT_PATH="%{$FX[bold]%}%$PROMPT_PATH_MAX_LENGTH<..<"'${vcs_info_msg_0_%%. }'"%<<%{$FX[no-bold]%}$FG[015]"
+PROMPT_PATH="%{$FX[bold]%}%$PROMPT_PATH_MAX_LENGTH<..<"'${vcs_info_msg_0_%%. }'"%<<%{$FX[no-bold]%}$FG[250]"
 PROMPT_RESET="%{$FX[reset]%}"
 
 PROMPT="$PROMPT_PATH_COLOR$PROMPT_PATH%(!.$PROMPT_ROOT_END.$PROMPT_DEFAULT_END)$PROMPT_RESET "
