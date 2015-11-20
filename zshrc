@@ -6,6 +6,15 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git zsh-syntax-highlighting)
 source ~/.oh-my-zsh/oh-my-zsh.sh
 
+## functions
+is_osx() {
+  if [ "$(uname)" = "Darwin" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 ## environment
 export EDITOR=vim
 export SVN_EDITOR="$EDITOR"
@@ -22,8 +31,10 @@ export CLICOLOR=1
 export LSCOLORS=exfxcxdxbxegedabagacad
 
 ## aliases
-# use ls that is aware of 'hidden' chflags setting.
-alias ls='/Users/ljb/.bin/ls -GFh'
+# use ls that is aware of 'hidden' chflags setting on OS X.
+is_osx && alias ls='/Users/ljb/.bin/ls -GFh'
+
+alias ledger="ledger -f $HOME/Documents/Ledger/2015.ledger"
 alias gpg='gpg2'
 
 ## zsh options
