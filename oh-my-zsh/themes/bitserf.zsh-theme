@@ -15,11 +15,8 @@
 PROMPT_PATH_MAX_LENGTH=25
 PROMPT_DEFAULT_END='λ'
 PROMPT_ROOT_END='#'
-if [ "$(hostname)" != "$HOME_SYSTEM" ]; then
-  PROMPT_SUCCESS_COLOR=$FG[010]
-else
-  PROMPT_SUCCESS_COLOR=$FG[008]
-fi
+PROMPT_SUCCESS_COLOR=$FG[008]
+PROMPT_HOST_COLOR=$FG[012]
 PROMPT_END_COLOR=$FG[015]
 PROMPT_FAILURE_COLOR=$FG[009]
 PROMPT_VCS_INFO_COLOR=$FG[242]
@@ -56,7 +53,11 @@ zstyle ':vcs_info:*:*' nvcsformats "%2(~.%1d.%1d) " ""
 
 # Define prompts.
 PROMPT_PATH_COLOR="%(0?.%{$PROMPT_SUCCESS_COLOR%}.%{$PROMPT_FAILURE_COLOR%})"
-PROMPT_PATH="%{$FX[bold]%}%$PROMPT_PATH_MAX_LENGTH<..<"'${vcs_info_msg_0_%%. }'"%<<%{$FX[no-bold]%}$FG[250]"
+if [ "$(hostname)" != "$HOME_SYSTEM" ]; then
+  PROMPT_PATH="%{$FX[bold]%}%{$PROMPT_HOST_COLOR%}%m%{$PROMPT_PATH_COLOR%}:%$PROMPT_PATH_MAX_LENGTH<..<"'${vcs_info_msg_0_%%. }'"%<<%{$FX[no-bold]%}$FG[250]"
+else
+  PROMPT_PATH="%{$FX[bold]%}%$PROMPT_PATH_MAX_LENGTH<..<"'${vcs_info_msg_0_%%. }'"%<<%{$FX[no-bold]%}$FG[250]"
+fi
 PROMPT_RESET="%{$FX[reset]%}"
 
 PROMPT="$PROMPT_PATH_COLOR$PROMPT_PATH$PROMPT_END_COLOR%(!.$PROMPT_ROOT_END.$PROMPT_DEFAULT_END)$PROMPT_RESET "
