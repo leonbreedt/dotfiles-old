@@ -1,4 +1,5 @@
 ## oh-my-zsh
+export HOME_SYSTEM="temujin.local"
 export ZSH=$HOME/.dotfiles/oh-my-zsh
 ZSH_THEME="bitserf"
 DISABLE_AUTO_UPDATE="true"
