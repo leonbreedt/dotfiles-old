@@ -35,7 +35,7 @@ export LSCOLORS=exfxcxdxbxegedabagacad
 # use ls that is aware of 'hidden' chflags setting on OS X.
 is_osx && alias ls='/Users/ljb/.bin/ls -GFh'
 
-alias ledger="ledger -f $HOME/Documents/Ledger/2015.ledger"
+alias ledger="ledger -f $HOME/Documents/Ledger/2015.ledger --strict"
 alias gpg='gpg2'
 
 ## zsh options
@@ -43,3 +43,8 @@ setopt NO_BEEP
 setopt AUTO_PARAM_SLASH
 setopt NO_AUTO_MENU
 setopt NO_MENU_COMPLETE
+
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
+ZSH_HIGHLIGHT_STYLES[path]='none'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='none'
+ZSH_HIGHLIGHT_STYLES[path_approx]='fg=yellow'
