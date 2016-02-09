@@ -37,6 +37,7 @@ is_osx && alias ls='/Users/ljb/.bin/ls -GFh'
 
 alias ledger="ledger -f $HOME/Documents/Ledger/2015.ledger --strict"
 alias gpg='gpg2'
+alias vi=vim
 
 ## zsh options
 setopt NO_BEEP
