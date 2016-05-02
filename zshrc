@@ -30,6 +30,7 @@ export PATH=$HOME/.bin:/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
 export CLICOLOR=1
 export LSCOLORS=exfxcxdxbxegedabagacad
+export GPG_TTY=$(tty)
 
 ## aliases
 # use ls that is aware of 'hidden' chflags setting on OS X.

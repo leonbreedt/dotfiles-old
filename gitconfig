@@ -6,7 +6,7 @@
 	co = checkout
         ci = commit
         ca = commit -a
-        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset <%C(cyan)%ae%Creset>' --abbrev-commit --date=relative
+        lg = log --graph --pretty=format:'%Cred%h%Creset - %G? -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset <%C(cyan)%ae%Creset>' --abbrev-commit --date=relative
         st = status
 [color]
         diff = auto
@@ -17,3 +17,5 @@
         pager = true
 [mergetool]
 	keepBackup = true
+[commit]
+	gpgsign = true
