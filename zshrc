@@ -46,6 +46,8 @@ setopt AUTO_PARAM_SLASH
 setopt NO_AUTO_MENU
 setopt NO_MENU_COMPLETE
 
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
 ZSH_HIGHLIGHT_STYLES[path]='none'
 ZSH_HIGHLIGHT_STYLES[path_prefix]='none'

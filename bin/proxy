@@ -1,0 +1,42 @@
+#!/bin/bash
+
+NS=/usr/sbin/networksetup
+
+list_service_order() {
+  ${NS} -listnetworkserviceorder | grep -v '*'
+}
+
+current_service() {
+  list_service_order | while read line; do 
+    name=$(echo ${line} | awk -F  "(, )|(: )|[)]" '{print $2}')
+    device=$(echo ${line} | awk -F  "(, )|(: )|[)]" '{print $4}')
+    if [ -n "${device}" ]; then
+      ifconfig ${device} 2>/dev/null | grep 'status: active' >/dev/null 2>&1
+      result="$?"
+      if [ "$result" -eq 0 ]; then
+        echo $name
+      fi
+    fi
+  done
+}
+
+service=$(current_service)
+if [ "${service}" = "" ]; then
+  echo "error: unable to determine which network service is enabled and connected."
+  exit 1
+fi
+
+command="$1"
+case $command in
+  enable)
+    host="${2:-localhost}"
+    port="${3:-4242}"
+    echo "Enabling proxy server ${host}:${port} for network service \"${service}\""
+    sudo ${NS} -setwebproxy "${service}" "${host}" "${port}"
+    sudo ${NS} -setwebproxystate "${service}" on
+    ;;
+  disable)
+    echo "Disabling proxy server for network service \"${service}\""
+    sudo ${NS} -setwebproxystate "${service}" off
+    ;;
+esac
